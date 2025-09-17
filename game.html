@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Adventure - Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-user-lock"></i>
+                    <span>Academic Adventure - Login</span>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#login" class="nav-link active">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Login Section -->
+        <section id="login" class="hero" style="min-height: 100vh; display: flex; align-items: center; background: #0097a1 url('./skygif.gif') center/cover no-repeat;">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Login to Continue</h1>
+                    <p class="hero-subtitle">Enter your credentials to access your academic adventure</p>
+                    <div class="hero-buttons">
+                        <a href="index.html" class="btn btn-secondary">Back to Home</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="login-form-container" style="width: 400px; padding: 2rem;">
+                        <form class="login-form" id="loginForm">
+                            <div class="form-group">
+                                <label for="username" style="color: white; margin-bottom: 0.5rem; display: block; font-family: var(--font-primary); font-size: var(--font-size-sm);">Username:</label>
+                                <input type="text" id="username" name="username" placeholder="Enter your username" required style="width: 100%; padding: var(--spacing-md); border: 4px solid var(--primary-color); border-radius: 0; font-size: var(--font-size-base); font-family: var(--font-primary); background: var(--background); color: var(--text-primary); image-rendering: pixelated;">
+                            </div>
+                            <div class="form-group" style="margin-bottom: var(--spacing-lg);">
+                                <label for="password" style="color: white; margin-bottom: 0.5rem; display: block; font-family: var(--font-primary); font-size: var(--font-size-sm);">Password:</label>
+                                <input type="password" id="password" name="password" placeholder="Enter your password" required style="width: 100%; padding: var(--spacing-md); border: 4px solid var(--primary-color); border-radius: 0; font-size: var(--font-size-base); font-family: var(--font-primary); background: var(--background); color: var(--text-primary); image-rendering: pixelated;">
+                            </div>
+                            <div class="form-group" style="text-align: center;">
+                                <button type="submit" class="btn btn-normal" style="min-width: 100px; margin-bottom: var(--spacing-md);">LOGIN</button>
+                                <p style="color: white; font-size: var(--font-size-xs); font-family: var(--font-primary); margin-top: var(--spacing-sm);">
+                                    Don't have an account? <a href="#" style="color: var(--accent-color); text-decoration: underline;">Sign up</a>
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Login form handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const username = document.getElementById('username').value;
+                    const password = document.getElementById('password').value;
+                    
+                    // Simple validation
+                    if (username && password) {
+                        // Show loading state
+                        const submitBtn = loginForm.querySelector('button[type="submit"]');
+                        const originalText = submitBtn.textContent;
+                        
+                        // Replace button content with loading GIF
+                        submitBtn.innerHTML = '<img src="output-onlinegiftools.gif" alt="Loading..." style="width: 30px; height: 30px; image-rendering: pixelated;" />';
+                        submitBtn.disabled = true;
+                        submitBtn.style.cursor = 'not-allowed';
+                        submitBtn.style.opacity = '0.8';
+                        
+                        // Simulate login process
+                        setTimeout(() => {
+                            // For demo purposes, accept any credentials
+                            alert('Login successful! Welcome to Academic Adventure!');
+                            // You can redirect to another page here
+                            // window.location.href = 'dashboard.html';
+                            
+                            // Reset form and button
+                            loginForm.reset();
+                            submitBtn.textContent = originalText;
+                            submitBtn.disabled = false;
+                            submitBtn.style.cursor = 'pointer';
+                            submitBtn.style.opacity = '1';
+                        }, 2000);
+                    } else {
+                        alert('Please enter both username and password.');
+                    }
+                });
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
